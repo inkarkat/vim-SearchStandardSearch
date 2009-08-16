@@ -12,8 +12,8 @@
 "   match"); and come in search forward (ending with '/') and search backward
 "   (ending with '?') variants. 
 "
-" [count]go/ / go?	Search forward / backward to the [count]th occurrence of
-"        	    	the current search pattern (plain normal search). 
+" [count]go/ / go?	Search forward / backward to the [count]'th occurrence
+"			of the current search pattern (plain normal search). 
 "
 "   For the SearchRepeat plugin, a parallel set of "go now and for next
 "   searches" mappings (starting with 'gn...' instead of 'go...') is installed.
@@ -26,7 +26,7 @@
 
 " DEPENDENCIES:
 "   - Requires Vim 7.0 or higher. 
-"   - SearchRepeat.vim
+"   - SearchRepeat.vim autoload script (optional integration). 
 
 " CONFIGURATION:
 " INTEGRATION:
@@ -41,6 +41,8 @@
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS 
+"	002	03-Jul-2009	BF: 'go/' and 'go?' mappings now do not depend
+"				on SearchRepeat and handle [count] correctly. 
 "	001	03-Jul-2009	file creation from ingoplugin.vim. 
 
 " Avoid installing twice or when in unsupported Vim version. 
@@ -51,8 +53,8 @@ let g:loaded_SearchDefaultSearch = 1
 
 " These "go once" mappings also set a definite search direction, so they can be
 " used to "revert" a ?search? into a /search/ and vice versa. 
-nmap <silent> go/ :<C-U>let v:searchforward=1<CR><Plug>SearchRepeat_n
-nmap <silent> go? :<C-U>let v:searchforward=0<CR><Plug>SearchRepeat_n
+nnoremap <silent> go/ :<C-U>let v:searchforward=1<Bar>execute 'normal!' v:count1 . 'nzv'<CR>
+nnoremap <silent> go? :<C-U>let v:searchforward=0<Bar>execute 'normal!' v:count1 . 'nzv'<CR>
 
 
 " Integration into SearchRepeat.vim
