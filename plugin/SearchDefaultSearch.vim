@@ -41,6 +41,7 @@
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS 
+"	003	17-Aug-2009	Added a:description to SearchRepeat#Register(). 
 "	002	03-Jul-2009	BF: 'go/' and 'go?' mappings now do not depend
 "				on SearchRepeat and handle [count] correctly. 
 "	001	03-Jul-2009	file creation from ingoplugin.vim. 
@@ -65,8 +66,8 @@ nnoremap <silent> go? :<C-U>let v:searchforward=0<Bar>execute 'normal!' v:count1
 " register 'gn?' with the opposite mapping, though, to avoid overriding the
 " 'gn/'. This means that it'll never be listed as active, but it's at least
 " included in the list. 
-call SearchRepeat#Register("\<Plug>SearchRepeat_n", '/', 'gn/', 'Standard search forward', '')
-call SearchRepeat#Register("\<Plug>SearchRepeat_N", '?', 'gn?', 'Standard search backward', '')
+call SearchRepeat#Register("\<Plug>SearchRepeat_n", '/', 'gn/', '', 'Standard search forward', '')
+call SearchRepeat#Register("\<Plug>SearchRepeat_N", '?', 'gn?', '', 'Standard search backward', '')
 nnoremap <silent> gn/ :<C-U>let v:searchforward=1<Bar>call SearchRepeat#Execute("\<Plug>SearchRepeat_n", "\<Plug>SearchRepeat_N", 2)<CR>
 nnoremap <silent> gn? :<C-U>let v:searchforward=0<Bar>call SearchRepeat#Execute("\<Plug>SearchRepeat_n", "\<Plug>SearchRepeat_N", 2)<CR>
 
