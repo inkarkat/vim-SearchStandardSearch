@@ -25,7 +25,7 @@
 "   ~/.vim/plugin). 
 
 " DEPENDENCIES:
-"   - Requires Vim 7.0 or higher. 
+"   - Requires Vim 7.2 or higher. 
 "   - SearchRepeat.vim autoload script (optional integration). 
 
 " CONFIGURATION:
@@ -41,13 +41,15 @@
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS 
+"	004	03-Oct-2009	BUG: Actually requiring Vim 7.2 for
+"				v:searchforward. 
 "	003	17-Aug-2009	Added a:description to SearchRepeat#Register(). 
 "	002	03-Jul-2009	BF: 'go/' and 'go?' mappings now do not depend
 "				on SearchRepeat and handle [count] correctly. 
 "	001	03-Jul-2009	file creation from ingoplugin.vim. 
 
 " Avoid installing twice or when in unsupported Vim version. 
-if exists('g:loaded_SearchDefaultSearch') || (v:version < 700)
+if exists('g:loaded_SearchDefaultSearch') || (v:version < 702)
     finish
 endif
 let g:loaded_SearchDefaultSearch = 1
