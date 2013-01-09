@@ -73,4 +73,4 @@ call SearchRepeat#Register("\<Plug>SearchRepeat_N", '?', 'gn?', '', 'Standard se
 nnoremap <silent> gn/ :<C-U>let v:searchforward=1<Bar>call SearchRepeat#Execute("\<Plug>SearchRepeat_n", "\<Plug>SearchRepeat_N", 2)<CR>
 nnoremap <silent> gn? :<C-U>let v:searchforward=0<Bar>call SearchRepeat#Execute("\<Plug>SearchRepeat_n", "\<Plug>SearchRepeat_N", 2)<CR>
 
-" vim: set sts=4 sw=4 noexpandtab ff=unix fdm=syntax :
+" vim: set ts=8 sts=4 sw=4 noexpandtab ff=unix fdm=syntax :
