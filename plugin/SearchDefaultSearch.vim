@@ -1,46 +1,16 @@
-" SearchDefaultSearch.vim: Re-activate the normal, built-in search in
-" SearchRepeat.
+" SearchDefaultSearch.vim: Re-activate the normal, built-in search in SearchRepeat.
 "
-" DESCRIPTION:
-"   When a non-default search type is active in SearchRepeat, the plain normal
-"   search can be restored by typing '/<Return>'. This script adds and registers
-"   mappings to perform only one normal search or to completely reactivate the
-"   normal search.
-"
-" USAGE:
-"   The special searches all start with 'go...' (mnemonic: "go once to special
-"   match"); and come in search forward (ending with '/') and search backward
-"   (ending with '?') variants.
-"
-" [count]go/ / go?	Search forward / backward to the [count]'th occurrence
-"			of the last search pattern (plain normal search).
-"
-"   For the SearchRepeat plugin, a parallel set of "go now and for next
-"   searches" mappings (starting with 'gn...' instead of 'go...') is installed.
-"   These mappings have the same effect, but in addition re-program the 'n/N'
-"   keys to repeat the plain normal search (until another gn... search is used).
-"
-" INSTALLATION:
-"   Put the script into your user or system Vim plugin directory (e.g.
-"   ~/.vim/plugin).
-
 " DEPENDENCIES:
 "   - Requires Vim 7.2 or higher.
-"   - SearchRepeat.vim autoload script (optional integration).
+"   - SearchRepeat.vim autoload script (optional integration)
 
-" CONFIGURATION:
-" INTEGRATION:
-" LIMITATIONS:
-" ASSUMPTIONS:
-" KNOWN PROBLEMS:
-" TODO:
-"
-" Copyright: (C) 2009 by Ingo Karkat
+" Copyright: (C) 2009-2014 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS
+"	005	06-May-2014	Split off documentation.
 "	004	03-Oct-2009	BUG: Actually requiring Vim 7.2 for
 "				v:searchforward.
 "	003	17-Aug-2009	Added a:description to SearchRepeat#Register().
