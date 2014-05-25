@@ -1,0 +1,101 @@
+*SearchDefaultSearch.txt*	Re-activate the normal, built-in search in SearchRepeat.
+
+		   SEARCH DEFAULT SEARCH    by Ingo Karkat
+						     *SearchDefaultSearch.vim*
+description			|SearchDefaultSearch-description|
+usage				|SearchDefaultSearch-usage|
+installation			|SearchDefaultSearch-installation|
+configuration			|SearchDefaultSearch-configuration|
+integration			|SearchDefaultSearch-integration|
+limitations			|SearchDefaultSearch-limitations|
+known problems			|SearchDefaultSearch-known-problems|
+todo				|SearchDefaultSearch-todo|
+history				|SearchDefaultSearch-history|
+
+==============================================================================
+DESCRIPTION				     *SearchDefaultSearch-description*
+
+When a non-default search type is active in SearchRepeat, the plain normal
+search can be restored by typing '/<Enter>'. This script adds and registers
+mappings to perform only one normal search or to completely reactivate the
+normal search.
+
+HOW IT WORKS								     *
+
+SOURCE									     *
+(Original Vim tip, Stack Overflow answer, ...)
+
+SEE ALSO								     *
+(Plugins offering complementary functionality, or plugins using this library.)
+
+RELATED WORKS								     *
+(Alternatives from other authors, other approaches, references not used here.)
+
+==============================================================================
+USAGE						   *SearchDefaultSearch-usage*
+
+The special searches all start with 'go...' (mnemonic: "go once to special
+match"); and come in search forward (ending with '/') and search backward
+(ending with '?') variants.
+
+[count]go/ / go?	Search forward / backward to the [count]'th occurrence
+			of the last search pattern (plain normal search).
+
+For the SearchRepeat plugin, a parallel set of "go now and for next searches"
+mappings (starting with 'gn...' instead of 'go...') is installed. These
+mappings have the same effect, but in addition re-program the 'n/N' keys to
+repeat the plain normal search (until another gn... search is used).
+
+EXAMPLE						 *SearchDefaultSearch-example*
+
+==============================================================================
+INSTALLATION				    *SearchDefaultSearch-installation*
+
+This script is packaged as a |vimball|. If you have the "gunzip" decompressor
+in your PATH, simply edit the *.vmb.gz package in Vim; otherwise, decompress
+the archive first, e.g. using WinZip. Inside Vim, install by sourcing the
+vimball or via the |:UseVimball| command. >
+    vim SearchDefaultSearch*.vmb.gz
+    :so %
+To uninstall, use the |:RmVimball| command.
+
+DEPENDENCIES				    *SearchDefaultSearch-dependencies*
+
+- Requires Vim 7.0 or higher.
+
+==============================================================================
+CONFIGURATION				   *SearchDefaultSearch-configuration*
+
+For a permanent configuration, put the following commands into your |vimrc|:
+configvar
+						   *SearchDefaultSearch-remap*
+plugmap
+
+==============================================================================
+INTEGRATION				     *SearchDefaultSearch-integration*
+
+==============================================================================
+LIMITATIONS				     *SearchDefaultSearch-limitations*
+
+KNOWN PROBLEMS				  *SearchDefaultSearch-known-problems*
+
+TODO						    *SearchDefaultSearch-todo*
+
+IDEAS						   *SearchDefaultSearch-ideas*
+
+==============================================================================
+HISTORY						 *SearchDefaultSearch-history*
+
+GOAL
+First published version.
+
+0.01	03-Jul-2009
+Started development.
+
+==============================================================================
+Copyright: (C) 2009-2014 Ingo Karkat
+The VIM LICENSE applies to this plugin; see |copyright|.
+
+Maintainer:	Ingo Karkat <ingo@karkat.de>
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:
