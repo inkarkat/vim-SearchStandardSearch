@@ -10,6 +10,8 @@
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS
+"   1.00.007	27-May-2014	Add isOpposite flag to SearchRepeat#Execute()
+"				for SearchRepeat version 1.10.
 "   1.00.006	24-May-2014	Adapt to polished SearchRepeat interface.
 "				Make go... mappings configurable.
 "	005	06-May-2014	Split off documentation.
@@ -48,7 +50,7 @@ endif
 " included in the list.
 call SearchRepeat#Register("\<Plug>(SearchRepeat_n)", '/', '/', '', 'Standard search forward', '')
 call SearchRepeat#Register("\<Plug>(SearchRepeat_N)", '?', '?', '', 'Standard search backward', '')
-execute printf('nnoremap <silent> %s/ :<C-u>let v:searchforward=1<Bar>call SearchRepeat#Execute("\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<CR>', g:SearchRepeat_MappingPrefix)
-execute printf('nnoremap <silent> %s? :<C-u>let v:searchforward=0<Bar>call SearchRepeat#Execute("\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<CR>', g:SearchRepeat_MappingPrefix)
+execute printf('nnoremap <silent> %s/ :<C-u>let v:searchforward=1<Bar>call SearchRepeat#Execute(0, "\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<CR>', g:SearchRepeat_MappingPrefix)
+execute printf('nnoremap <silent> %s? :<C-u>let v:searchforward=0<Bar>call SearchRepeat#Execute(0, "\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<CR>', g:SearchRepeat_MappingPrefix)
 
 " vim: set ts=8 sts=4 sw=4 noexpandtab ff=unix fdm=syntax :
