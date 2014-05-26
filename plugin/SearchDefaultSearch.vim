@@ -10,6 +10,8 @@
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS
+"   1.00.006	24-May-2014	Adapt to polished SearchRepeat interface.
+"				Make go... mappings configurable.
 "	005	06-May-2014	Split off documentation.
 "	004	03-Oct-2009	BUG: Actually requiring Vim 7.2 for
 "				v:searchforward.
@@ -26,11 +28,17 @@ let g:loaded_SearchDefaultSearch = 1
 
 " These "go once" mappings also set a definite search direction, so they can be
 " used to "revert" a ?search? into a /search/ and vice versa.
-nnoremap <silent> go/ :<C-U>let v:searchforward=1<Bar>execute 'normal!' v:count1 . 'nzv'<CR>
-nnoremap <silent> go? :<C-U>let v:searchforward=0<Bar>execute 'normal!' v:count1 . 'nzv'<CR>
+nnoremap <silent> <Plug>(SearchDefaultSearchNext) :<C-u>let v:searchforward=1<Bar>execute 'normal!' v:count1 . 'nzv'<CR>
+if ! hasmapto('<Plug>(SearchDefaultSearchNext)', 'n')
+    nmap go/ <Plug>(SearchDefaultSearchNext)
+endif
+nnoremap <silent> <Plug>(SearchDefaultSearchPrev) :<C-u>let v:searchforward=0<Bar>execute 'normal!' v:count1 . 'nzv'<CR>
+if ! hasmapto('<Plug>(SearchDefaultSearchPrev)', 'n')
+    nmap go? <Plug>(SearchDefaultSearchPrev)
+endif
 
 
-" Integration into SearchRepeat.vim
+"- Integration into SearchRepeat.vim -------------------------------------------
 
 " In the standard search, the two directions never swap (it's always n/N, never
 " N/n), because the search direction is determined by the use of the / or ?
@@ -38,9 +46,9 @@ nnoremap <silent> go? :<C-U>let v:searchforward=0<Bar>execute 'normal!' v:count1
 " register 'gn?' with the opposite mapping, though, to avoid overriding the
 " 'gn/'. This means that it'll never be listed as active, but it's at least
 " included in the list.
-call SearchRepeat#Register("\<Plug>SearchRepeat_n", '/', 'gn/', '', 'Standard search forward', '')
-call SearchRepeat#Register("\<Plug>SearchRepeat_N", '?', 'gn?', '', 'Standard search backward', '')
-nnoremap <silent> gn/ :<C-U>let v:searchforward=1<Bar>call SearchRepeat#Execute("\<Plug>SearchRepeat_n", "\<Plug>SearchRepeat_N", 2)<CR>
-nnoremap <silent> gn? :<C-U>let v:searchforward=0<Bar>call SearchRepeat#Execute("\<Plug>SearchRepeat_n", "\<Plug>SearchRepeat_N", 2)<CR>
+call SearchRepeat#Register("\<Plug>(SearchRepeat_n)", '/', '/', '', 'Standard search forward', '')
+call SearchRepeat#Register("\<Plug>(SearchRepeat_N)", '?', '?', '', 'Standard search backward', '')
+execute printf('nnoremap <silent> %s/ :<C-u>let v:searchforward=1<Bar>call SearchRepeat#Execute("\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<CR>', g:SearchRepeat_MappingPrefix)
+execute printf('nnoremap <silent> %s? :<C-u>let v:searchforward=0<Bar>call SearchRepeat#Execute("\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<CR>', g:SearchRepeat_MappingPrefix)
 
 " vim: set ts=8 sts=4 sw=4 noexpandtab ff=unix fdm=syntax :
