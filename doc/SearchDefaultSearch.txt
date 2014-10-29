@@ -15,21 +15,11 @@ history				|SearchDefaultSearch-history|
 ==============================================================================
 DESCRIPTION				     *SearchDefaultSearch-description*
 
-When a non-default search type is active in SearchRepeat, the plain normal
-search can be restored by typing '/<Enter>'. This script adds and registers
-mappings to perform only one normal search or to completely reactivate the
-normal search.
-
-HOW IT WORKS								     *
-
-SOURCE									     *
-(Original Vim tip, Stack Overflow answer, ...)
-
-SEE ALSO								     *
-(Plugins offering complementary functionality, or plugins using this library.)
-
-RELATED WORKS								     *
-(Alternatives from other authors, other approaches, references not used here.)
+When a non-default search type is active in the |SearchRepeat.vim| (vimscript
+#4949) plugin, the plain normal search can be restored by typing '/<Enter>'.
+This script adds and registers mappings to perform only one normal search
+(without repeating that) or to completely reactivate the normal search via
+|go/| and |go?|.
 
 ==============================================================================
 USAGE						   *SearchDefaultSearch-usage*
@@ -46,8 +36,6 @@ mappings (starting with 'gn...' instead of 'go...') is installed. These
 mappings have the same effect, but in addition re-program the 'n/N' keys to
 repeat the plain normal search (until another gn... search is used).
 
-EXAMPLE						 *SearchDefaultSearch-example*
-
 ==============================================================================
 INSTALLATION				    *SearchDefaultSearch-installation*
 
@@ -62,6 +50,8 @@ To uninstall, use the |:RmVimball| command.
 DEPENDENCIES				    *SearchDefaultSearch-dependencies*
 
 - Requires Vim 7.0 or higher.
+- Requires the |SearchRepeat.vim| plugin (vimscript #4949), version 1.00 or
+  higher.
 
 ==============================================================================
 CONFIGURATION				   *SearchDefaultSearch-configuration*
