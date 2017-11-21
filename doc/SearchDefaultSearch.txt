@@ -19,22 +19,17 @@ When a non-default search type is active in the |SearchRepeat.vim| (vimscript
 #4949) plugin, the plain normal search can be restored by typing '/<Enter>'.
 This script adds and registers mappings to perform only one normal search
 (without repeating that) or to completely reactivate the normal search via
-|go/| and |go?|.
+|go/| and |gO/| (and |go?| as a synonym for the latter).
 
 ==============================================================================
 USAGE						   *SearchDefaultSearch-usage*
 
 The special searches all start with 'go...' (mnemonic: "go once to special
-match"); and come in search forward (ending with '/') and search backward
-(ending with '?') variants.
+match"); and come in search forward (go...) and backward (gO...) variants.
 
-[count]go/ / go?	Search forward / backward to the [count]'th occurrence
+							     *go/* *gO/* *go?*
+[count]go/ / gO/, go?	Search forward / backward to the [count]'th occurrence
 			of the last search pattern (plain normal search).
-
-For the SearchRepeat plugin, a parallel set of "go now and for next searches"
-mappings (starting with 'gn...' instead of 'go...') is installed. These
-mappings have the same effect, but in addition re-program the 'n/N' keys to
-repeat the plain normal search (until another gn... search is used).
 
 ==============================================================================
 INSTALLATION				    *SearchDefaultSearch-installation*
@@ -50,7 +45,7 @@ To uninstall, use the |:RmVimball| command.
 DEPENDENCIES				    *SearchDefaultSearch-dependencies*
 
 - Requires Vim 7.2 or higher.
-- Requires the |SearchRepeat.vim| plugin (vimscript #4949), version 1.00 or
+- Requires the |SearchRepeat.vim| plugin (vimscript #4949), version 2.00 or
   higher.
 
 ==============================================================================
@@ -63,6 +58,12 @@ plugmap
 
 ==============================================================================
 INTEGRATION				     *SearchDefaultSearch-integration*
+
+If the SearchRepeat plugin is installed, a parallel set of "go now and for
+next searches" mappings (starting with 'gn...' instead of 'go...') is
+installed. These mappings have the same effect, but in addition re-program the
+'n/N' keys to repeat this particular search (until another gn... search is
+used).
 
 ==============================================================================
 LIMITATIONS				     *SearchDefaultSearch-limitations*
@@ -83,7 +84,7 @@ First published version.
 Started development.
 
 ==============================================================================
-Copyright: (C) 2009-2014 Ingo Karkat
+Copyright: (C) 2009-2016 Ingo Karkat
 The VIM LICENSE applies to this plugin; see |copyright|.
 
 Maintainer:	Ingo Karkat <ingo@karkat.de>
