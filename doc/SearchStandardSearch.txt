@@ -1,0 +1,92 @@
+*SearchStandardSearch.txt*	Re-activate the normal, built-in search in SearchRepeat.
+
+		   SEARCH STANDARD SEARCH    by Ingo Karkat
+						    *SearchStandardSearch.vim*
+description			|SearchStandardSearch-description|
+usage				|SearchStandardSearch-usage|
+installation			|SearchStandardSearch-installation|
+configuration			|SearchStandardSearch-configuration|
+integration			|SearchStandardSearch-integration|
+limitations			|SearchStandardSearch-limitations|
+known problems			|SearchStandardSearch-known-problems|
+todo				|SearchStandardSearch-todo|
+history				|SearchStandardSearch-history|
+
+==============================================================================
+DESCRIPTION				    *SearchStandardSearch-description*
+
+When a custom search type is active in the |SearchRepeat.vim| (vimscript #4949)
+plugin, the plain normal search can be restored by typing '/<Enter>'. This
+script adds and registers mappings to perform only one normal search (without
+repeating that) or to completely reactivate the normal search via |go/| and
+|gO/| (and |go?| as a synonym for the latter).
+
+==============================================================================
+USAGE						  *SearchStandardSearch-usage*
+
+The special searches all start with 'go...' (mnemonic: "go once to special
+match"); and come in search forward (go...) and backward (gO...) variants.
+
+							     *go/* *gO/* *go?*
+[count]go/ / gO/, go?	Search forward / backward to the [count]'th occurrence
+			of the last search pattern (plain normal search).
+
+==============================================================================
+INSTALLATION				   *SearchStandardSearch-installation*
+
+This script is packaged as a |vimball|. If you have the "gunzip" decompressor
+in your PATH, simply edit the *.vmb.gz package in Vim; otherwise, decompress
+the archive first, e.g. using WinZip. Inside Vim, install by sourcing the
+vimball or via the |:UseVimball| command. >
+    vim SearchStandardSearch*.vmb.gz
+    :so %
+To uninstall, use the |:RmVimball| command.
+
+DEPENDENCIES				    *SearchStandardSearch-dependencies*
+
+- Requires Vim 7.2 or higher.
+- Requires the |SearchRepeat.vim| plugin (vimscript #4949), version 2.00 or
+  higher.
+
+==============================================================================
+CONFIGURATION				  *SearchStandardSearch-configuration*
+
+For a permanent configuration, put the following commands into your |vimrc|:
+configvar
+						   *SearchStandardSearch-remap*
+plugmap
+
+==============================================================================
+INTEGRATION				    *SearchStandardSearch-integration*
+
+If the SearchRepeat plugin is installed, a parallel set of "go now and for
+next searches" mappings (starting with 'gn...' instead of 'go...') is
+installed. These mappings have the same effect, but in addition re-program the
+'n/N' keys to repeat this particular search (until another gn... search is
+used).
+
+==============================================================================
+LIMITATIONS				    *SearchStandardSearch-limitations*
+
+KNOWN PROBLEMS				 *SearchStandardSearch-known-problems*
+
+TODO						   *SearchStandardSearch-todo*
+
+IDEAS						  *SearchStandardSearch-ideas*
+
+==============================================================================
+HISTORY						*SearchStandardSearch-history*
+
+GOAL
+First published version.
+
+0.01	03-Jul-2009
+Started development.
+
+==============================================================================
+Copyright: (C) 2009-2017 Ingo Karkat
+The VIM LICENSE applies to this plugin; see |copyright|.
+
+Maintainer:	Ingo Karkat <ingo@karkat.de>
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:
