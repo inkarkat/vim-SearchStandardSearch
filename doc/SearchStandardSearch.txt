@@ -21,6 +21,11 @@ script adds and registers mappings to perform only one normal search (without
 repeating that) or to completely reactivate the normal search via |go/| and
 |gO/| (and |go?| as a synonym for the latter).
 
+SEE ALSO								     *
+
+- Check out the |SearchRepeat.vim| plugin page (vimscript #4949) for a full
+  list of custom searches that integrate with it.
+
 ==============================================================================
 USAGE						  *SearchStandardSearch-usage*
 
