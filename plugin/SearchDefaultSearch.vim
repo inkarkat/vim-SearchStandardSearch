@@ -5,12 +5,14 @@
 "   - SearchRepeat.vim autoload script
 "   - ingo/err.vim autoload script
 
-" Copyright: (C) 2009-2014 Ingo Karkat
+" Copyright: (C) 2009-2016 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS
+"   2.00.008	29-Apr-2016	Adapt to changed SearchRepeat.vim version 2.00
+"				interface.
 "   1.00.007	27-May-2014	Add isOpposite flag to SearchRepeat#Execute()
 "				for SearchRepeat version 1.10.
 "				FIX: Need to check status of
@@ -39,6 +41,8 @@ if ! hasmapto('<Plug>(SearchDefaultSearchNext)', 'n')
 endif
 nnoremap <silent> <Plug>(SearchDefaultSearchPrev) :<C-u>let v:searchforward=0<Bar>execute 'normal!' v:count1 . 'nzv'<CR>
 if ! hasmapto('<Plug>(SearchDefaultSearchPrev)', 'n')
+    nmap gO/ <Plug>(SearchDefaultSearchPrev)
+    " Define this variant, too.
     nmap go? <Plug>(SearchDefaultSearchPrev)
 endif
 
@@ -51,9 +55,9 @@ endif
 " register 'gn?' with the opposite mapping, though, to avoid overriding the
 " 'gn/'. This means that it'll never be listed as active, but it's at least
 " included in the list.
-call SearchRepeat#Register("\<Plug>(SearchRepeat_n)", '/', '/', '', 'Standard search forward', '')
-call SearchRepeat#Register("\<Plug>(SearchRepeat_N)", '?', '?', '', 'Standard search backward', '')
-execute printf('nnoremap <silent> %s/ :<C-u>let v:searchforward=1<Bar>if ! SearchRepeat#Execute(0, "\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<Bar>echoerr ingo#err#Get()<Bar>endif<CR>', g:SearchRepeat_MappingPrefix)
-execute printf('nnoremap <silent> %s? :<C-u>let v:searchforward=0<Bar>if ! SearchRepeat#Execute(0, "\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<Bar>echoerr ingo#err#Get()<Bar>endif<CR>', g:SearchRepeat_MappingPrefix)
+call SearchRepeat#Register("\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", '/', '/', '', 'Standard search', '')
+execute printf('nnoremap <silent> %s/ :<C-u>let v:searchforward=1<Bar>if ! SearchRepeat#Execute(0, "\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<Bar>echoerr ingo#err#Get()<Bar>endif<CR>', g:SearchRepeat_MappingPrefixNext)
+execute printf('nnoremap <silent> %s/ :<C-u>let v:searchforward=1<Bar>if ! SearchRepeat#Execute(0, "\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<Bar>echoerr ingo#err#Get()<Bar>endif<CR>', g:SearchRepeat_MappingPrefixPrev)
+execute printf('nnoremap <silent> %s? :<C-u>let v:searchforward=0<Bar>if ! SearchRepeat#Execute(0, "\<Plug>(SearchRepeat_n)", "\<Plug>(SearchRepeat_N)", 2)<Bar>echoerr ingo#err#Get()<Bar>endif<CR>', g:SearchRepeat_MappingPrefixNext)
 
 " vim: set ts=8 sts=4 sw=4 noexpandtab ff=unix fdm=syntax :
